@@ -1,0 +1,6 @@
+framework module RevolutionRoboticsBluetooth {
+  umbrella header "RevolutionRoboticsBluetooth-umbrella.h"
+
+  export *
+  module * { export * }
+}

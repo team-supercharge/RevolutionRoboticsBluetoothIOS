@@ -1,0 +1,22 @@
+{
+  "name": "RevolutionRoboticsBluetooth",
+  "version": "0.1.0",
+  "summary": "A short description of RevolutionRoboticsBluetooth.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Gabor Nagy Farkas/RevolutionRoboticsBluetooth",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Gabor Nagy Farkas": "gabor.nagy.farkas@supercharge.io"
+  },
+  "source": {
+    "git": "https://github.com/Gabor Nagy Farkas/RevolutionRoboticsBluetooth.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RevolutionRoboticsBluetooth/Classes/**/*"
+}
