@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RevolutionRoboticsBluetooth: eed244a6e560f38c047c4e0a5823b6976d09113e
+  RevolutionRoboticsBluetooth: 1af416fe3140aba90113bd7bd469b7279a09dd8b
 
 PODFILE CHECKSUM: f16c702602ac7fc75b212803faffcc9fc77495ec
 

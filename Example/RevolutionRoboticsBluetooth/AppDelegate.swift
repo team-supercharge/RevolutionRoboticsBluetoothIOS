@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RevolutionRoboticsBluetooth
 //
-//  Created by Gabor Nagy Farkas on 04/11/2019.
+//  Created by Gabor Nagy Farkas on 04/16/2019.
 //  Copyright (c) 2019 Gabor Nagy Farkas. All rights reserved.
 //
 

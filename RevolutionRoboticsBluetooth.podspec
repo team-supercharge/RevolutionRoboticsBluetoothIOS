@@ -21,15 +21,15 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Gabor Nagy Farkas/RevolutionRoboticsBluetooth'
+  s.homepage         = 'https://gitlab.supercharge.io/revolutionrobotics/bluetooth-ios'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Gabor Nagy Farkas' => 'gabor.nagy.farkas@supercharge.io' }
-  s.source           = { :git => 'https://github.com/Gabor Nagy Farkas/RevolutionRoboticsBluetooth.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://gitlab.supercharge.io/revolutionrobotics/bluetooth-ios', :tag => s.version.to_s }
+  s.swift_version = "5.0"
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
-  s.swift_version = '5.0'
 
   s.source_files = 'RevolutionRoboticsBluetooth/Classes/**/*'
   
@@ -38,6 +38,6 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'CoreBluetooth'
+  s.frameworks = 'UIKit', 'CoreBluetooth'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

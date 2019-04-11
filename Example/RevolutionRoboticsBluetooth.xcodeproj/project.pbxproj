@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		353F483D103060575D45DE7C /* Pods_RevolutionRoboticsBluetooth_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0D277AC7D02157D436BB28 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */; };
-		43A7266B9DAE8F5A49A376AF /* Pods_RevolutionRoboticsBluetooth_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0330A0D6D57C08B833B387 /* Pods_RevolutionRoboticsBluetooth_Example.framework */; };
+		2B22DF40B6B7A3E8935B4ECE /* Pods_RevolutionRoboticsBluetooth_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EB96A025ED0B3DF978687E /* Pods_RevolutionRoboticsBluetooth_Example.framework */; };
+		2CA10AC592A19B0CF56262CC /* Pods_RevolutionRoboticsBluetooth_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99CFEB35A6BDA27F3FABA7C5 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -28,9 +28,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E46663C780082B4387800D7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		4944631BCE7B12EC661D64AF /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig"; sourceTree = "<group>"; };
-		5B9DD7F931AD1164A3303628 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Tests/Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		087655AD8F2E89B57FDAD7C7 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Tests/Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1039617A4A654DD1ED03F2A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		17AC63EBF22E22CF283261CE /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1CE60906694C0C8F4060A0A3 /* RevolutionRoboticsBluetooth.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RevolutionRoboticsBluetooth.podspec; path = ../RevolutionRoboticsBluetooth.podspec; sourceTree = "<group>"; };
+		5773C2EE18B3445F0E1BE344 /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RevolutionRoboticsBluetooth_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevolutionRoboticsBluetooth_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,12 +43,10 @@
 		607FACE51AFB9204008FA782 /* RevolutionRoboticsBluetooth_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevolutionRoboticsBluetooth_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		70B7DABC1BD3429FF440206D /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B84E4186604C8F4130EB887D /* RevolutionRoboticsBluetooth.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RevolutionRoboticsBluetooth.podspec; path = ../RevolutionRoboticsBluetooth.podspec; sourceTree = "<group>"; };
-		BC7D05AC2263AEEF6099E722 /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Tests/Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CE0330A0D6D57C08B833B387 /* Pods_RevolutionRoboticsBluetooth_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutionRoboticsBluetooth_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC0D277AC7D02157D436BB28 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutionRoboticsBluetooth_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE2B655D839FF0D8B92D64B6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		720A2E4A75D0D184E20C830F /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig"; path = "Target Support Files/Pods-RevolutionRoboticsBluetooth_Tests/Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7535C2F5EE51672828AD60F1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		97EB96A025ED0B3DF978687E /* Pods_RevolutionRoboticsBluetooth_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutionRoboticsBluetooth_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99CFEB35A6BDA27F3FABA7C5 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevolutionRoboticsBluetooth_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43A7266B9DAE8F5A49A376AF /* Pods_RevolutionRoboticsBluetooth_Example.framework in Frameworks */,
+				2B22DF40B6B7A3E8935B4ECE /* Pods_RevolutionRoboticsBluetooth_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,22 +62,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				353F483D103060575D45DE7C /* Pods_RevolutionRoboticsBluetooth_Tests.framework in Frameworks */,
+				2CA10AC592A19B0CF56262CC /* Pods_RevolutionRoboticsBluetooth_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E8D79D4E67543C602C85865 /* Pods */ = {
+		42B53B39A0B3465E2CC40DB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				70B7DABC1BD3429FF440206D /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */,
-				4944631BCE7B12EC661D64AF /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */,
-				5B9DD7F931AD1164A3303628 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */,
-				BC7D05AC2263AEEF6099E722 /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */,
+				97EB96A025ED0B3DF978687E /* Pods_RevolutionRoboticsBluetooth_Example.framework */,
+				99CFEB35A6BDA27F3FABA7C5 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */,
 			);
-			path = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -87,8 +85,8 @@
 				607FACD21AFB9204008FA782 /* Example for RevolutionRoboticsBluetooth */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				2E8D79D4E67543C602C85865 /* Pods */,
-				E66A58428C0CCA3A9840B0D8 /* Frameworks */,
+				B9F3E376B7E19FC172EE76F6 /* Pods */,
+				42B53B39A0B3465E2CC40DB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,20 +141,22 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				B84E4186604C8F4130EB887D /* RevolutionRoboticsBluetooth.podspec */,
-				FE2B655D839FF0D8B92D64B6 /* README.md */,
-				0E46663C780082B4387800D7 /* LICENSE */,
+				1CE60906694C0C8F4060A0A3 /* RevolutionRoboticsBluetooth.podspec */,
+				7535C2F5EE51672828AD60F1 /* README.md */,
+				1039617A4A654DD1ED03F2A0 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		E66A58428C0CCA3A9840B0D8 /* Frameworks */ = {
+		B9F3E376B7E19FC172EE76F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CE0330A0D6D57C08B833B387 /* Pods_RevolutionRoboticsBluetooth_Example.framework */,
-				FC0D277AC7D02157D436BB28 /* Pods_RevolutionRoboticsBluetooth_Tests.framework */,
+				17AC63EBF22E22CF283261CE /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */,
+				5773C2EE18B3445F0E1BE344 /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */,
+				087655AD8F2E89B57FDAD7C7 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */,
+				720A2E4A75D0D184E20C830F /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */,
 			);
-			name = Frameworks;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RevolutionRoboticsBluetooth_Example" */;
 			buildPhases = (
-				86473E666AED9107E6D3B98D /* [CP] Check Pods Manifest.lock */,
+				C617EFC463DE88DC24F53915 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				C56519934FB4E7FDADAAE9A9 /* [CP] Embed Pods Frameworks */,
+				49AAD2FD234E4F27FA73A1AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,7 +185,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RevolutionRoboticsBluetooth_Tests" */;
 			buildPhases = (
-				0191D5D964880E614A8B15C6 /* [CP] Check Pods Manifest.lock */,
+				BA1337591FAD45839D5D5E8F /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -213,10 +213,12 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -262,7 +264,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0191D5D964880E614A8B15C6 /* [CP] Check Pods Manifest.lock */ = {
+		49AAD2FD234E4F27FA73A1AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RevolutionRoboticsBluetooth/RevolutionRoboticsBluetooth.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevolutionRoboticsBluetooth.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA1337591FAD45839D5D5E8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -284,7 +308,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		86473E666AED9107E6D3B98D /* [CP] Check Pods Manifest.lock */ = {
+		C617EFC463DE88DC24F53915 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -304,28 +328,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C56519934FB4E7FDADAAE9A9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RevolutionRoboticsBluetooth/RevolutionRoboticsBluetooth.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevolutionRoboticsBluetooth.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RevolutionRoboticsBluetooth_Example/Pods-RevolutionRoboticsBluetooth_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -479,38 +481,46 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70B7DABC1BD3429FF440206D /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */;
+			baseConfigurationReference = 17AC63EBF22E22CF283261CE /* Pods-RevolutionRoboticsBluetooth_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RevolutionRoboticsBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4944631BCE7B12EC661D64AF /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */;
+			baseConfigurationReference = 5773C2EE18B3445F0E1BE344 /* Pods-RevolutionRoboticsBluetooth_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RevolutionRoboticsBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B9DD7F931AD1164A3303628 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */;
+			baseConfigurationReference = 087655AD8F2E89B57FDAD7C7 /* Pods-RevolutionRoboticsBluetooth_Tests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -523,16 +533,19 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevolutionRoboticsBluetooth_Example.app/RevolutionRoboticsBluetooth_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC7D05AC2263AEEF6099E722 /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */;
+			baseConfigurationReference = 720A2E4A75D0D184E20C830F /* Pods-RevolutionRoboticsBluetooth_Tests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -541,8 +554,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RevolutionRoboticsBluetooth_Example.app/RevolutionRoboticsBluetooth_Example";
 			};
 			name = Release;
