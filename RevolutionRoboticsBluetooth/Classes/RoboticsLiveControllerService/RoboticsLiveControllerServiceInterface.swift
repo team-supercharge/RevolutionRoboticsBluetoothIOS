@@ -6,4 +6,9 @@
 //
 
 public protocol RoboticsLiveControllerServiceInterface {
+    func start()
+    func stop()
+    func updateXDirection(x: Int)
+    func updateYDirection(y: Int)
+    func changeButtonState(index: Int, pressed: Bool)
 }
