@@ -6,11 +6,11 @@
 //
 
 public protocol RoboticsDeviceServiceInterface {
-    func getSerialNumber(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getManufacturerName(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getHardwareRevision(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getSoftwareRevision(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getFirmwareRevision(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getSystemId(onCompleted: StringCallback?, onError: ErrorCallback?)
-    func getModelNumber(onCompleted: StringCallback?, onError: ErrorCallback?)
+    func getSerialNumber(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getManufacturerName(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getHardwareRevision(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getSoftwareRevision(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getFirmwareRevision(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getSystemId(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
+    func getModelNumber(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
 }

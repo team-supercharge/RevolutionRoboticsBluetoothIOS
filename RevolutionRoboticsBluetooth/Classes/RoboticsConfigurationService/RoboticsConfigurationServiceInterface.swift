@@ -6,9 +6,9 @@
 //
 
 public protocol RoboticsConfigurationServiceInterface {
-    func updateFirmware(with file: URL, onSuccess: Callback?, onError: ErrorCallback?)
-    func updateFramework(with file: URL, onSuccess: Callback?, onError: ErrorCallback?)
-    func testKit(with file: URL, onSuccess: Callback?, onError: ErrorCallback?)
-    func sendConfiguration(with file: URL, onSuccess: Callback?, onError: ErrorCallback?)
-    func changeName(with name: String, onSuccess: Callback?, onError: ErrorCallback?)
+    func updateFirmware(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?)
+    func updateFramework(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?)
+    func testKit(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?)
+    func sendConfiguration(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?)
+    func changeName(with name: String, onSuccess: Callback?, onError: CallbackType<Error>?)
 }

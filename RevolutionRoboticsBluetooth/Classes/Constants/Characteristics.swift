@@ -48,7 +48,7 @@ enum RoboticsSensorServiceCharacteristic {
 }
 
 enum RoboticsLiveControllerServiceCharacteristic {
-    static let startStoredProgram = "7486bec3-bb6b-4abd-a9ca-20adc281a0a4"
+    static let periodicControllerMessage = "7486bec3-bb6b-4abd-a9ca-20adc281a0a4"
     static let updateDirection = "1e01230f-f5f3-4a94-aac8-d09cd48f8d79"
     static let keepAlive = "9e55ea41-69c3-4729-9f9a-90bc27ab6253"
 }

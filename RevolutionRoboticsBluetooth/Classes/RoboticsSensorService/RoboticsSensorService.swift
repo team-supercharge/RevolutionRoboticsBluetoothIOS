@@ -9,11 +9,11 @@ import Foundation
 
 public final class RoboticsSensorService {
     // MARK: - Properties
-    private let bluetoothController: BluetoothControllerInterface = BluetoothController()
+    private let bluetoothController: BluetoothControllerInterface = BluetoothController.shared
 }
 
 // MARK: - RoboticsSensorServiceInterface
 extension RoboticsSensorService: RoboticsSensorServiceInterface {
-    public func read(id: Int, onSuccess: SensorInfoCallback?, onError: ErrorCallback?) {
+    public func read(id: Int, onSuccess: CallbackType<SensorInfo>?, onError: CallbackType<Error>?) {
     }
 }

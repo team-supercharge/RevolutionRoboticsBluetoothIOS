@@ -9,23 +9,52 @@ import Foundation
 
 public final class RoboticsLiveControllerService {
     // MARK: - Properties
-    private let bluetoothController: BluetoothControllerInterface = BluetoothController()
+    private let bluetoothController: BluetoothControllerInterface = BluetoothController.shared
+    private var timer: Timer?
+    private var dataModel = LiveControllerDataModel(xDirection: 127,
+                                                    yDirection: 127,
+                                                    buttonStates: [false, false, false, false, false, false])
+
+    public init() {
+    }
 }
 
 // MARK: - RoboticsLiveControllerServiceInterface
 extension RoboticsLiveControllerService: RoboticsLiveControllerServiceInterface {
     public func start() {
+        print("🔹 Keep alive started!")
+        timer = Timer.scheduledTimer(timeInterval: 0.1,
+                                     target: self,
+                                     selector: #selector(fireKeepAlive),
+                                     userInfo: nil,
+                                     repeats: true)
+        timer?.fire()
     }
 
     public func stop() {
+        timer?.invalidate()
+        timer = nil
+        print("🔹 Keep alive stopped!")
     }
 
     public func updateXDirection(x: Int) {
+        dataModel.xDirection = x
     }
 
     public func updateYDirection(y: Int) {
+        dataModel.yDirection = y
     }
 
     public func changeButtonState(index: Int, pressed: Bool) {
+        dataModel.buttonStates[index] = pressed
+    }
+}
+
+// MARK: - Timer
+extension RoboticsLiveControllerService {
+    @objc func fireKeepAlive() {
+        print("🔹 Keep alive fired!")
+        print(dataModel)
+        bluetoothController.write(liveController: dataModel)
     }
 }

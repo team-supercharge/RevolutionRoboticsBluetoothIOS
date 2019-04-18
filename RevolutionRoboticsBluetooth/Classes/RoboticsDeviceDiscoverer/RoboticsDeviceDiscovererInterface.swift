@@ -6,6 +6,6 @@
 //
 
 public protocol RoboticsDeviceDiscovererInterface {
-    func discoverRobots(onScanResult: DeviceArrayCallback?, onError: ErrorCallback?)
+    func discoverRobots(onScanResult: CallbackType<[Device]>?, onError: CallbackType<Error>?)
     func stopDiscover()
 }

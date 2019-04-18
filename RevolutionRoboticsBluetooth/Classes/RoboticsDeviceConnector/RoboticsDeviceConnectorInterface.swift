@@ -6,6 +6,6 @@
 //
 
 public protocol RoboticsDeviceConnectorInterface {
-    func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: ErrorCallback?)
+    func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: CallbackType<Error>?)
     func disconnect()
 }
