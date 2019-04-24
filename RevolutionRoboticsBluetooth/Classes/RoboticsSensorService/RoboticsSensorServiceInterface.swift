@@ -6,5 +6,5 @@
 //
 
 public protocol RoboticsSensorServiceInterface {
-    func read(id: Int, onSuccess: SensorInfoCallback?, onError: ErrorCallback?)
+    func read(id: Int, onSuccess: CallbackType<SensorInfo>?, onError: CallbackType<Error>?)
 }

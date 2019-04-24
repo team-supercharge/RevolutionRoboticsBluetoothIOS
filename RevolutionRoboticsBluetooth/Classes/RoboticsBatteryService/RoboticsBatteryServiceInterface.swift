@@ -6,6 +6,6 @@
 //
 
 public protocol RoboticsBatteryServiceInterface {
-    func getPrimaryBatteryPercentage(onComplete: IntCallback?, onError: ErrorCallback?)
-    func getMotorBatteryPercentage(onComplete: IntCallback?, onError: ErrorCallback?)
+    func getPrimaryBatteryPercentage(onComplete: CallbackType<Int>?, onError: CallbackType<Error>?)
+    func getMotorBatteryPercentage(onComplete: CallbackType<Int>?, onError: CallbackType<Error>?)
 }

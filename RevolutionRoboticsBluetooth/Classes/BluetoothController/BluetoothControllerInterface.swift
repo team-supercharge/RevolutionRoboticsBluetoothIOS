@@ -6,9 +6,10 @@
 //
 
 protocol BluetoothControllerInterface {
-    func discover(discoveredDevices: StringArrayCallback?, onError: ErrorCallback?)
-    func readData(from characteristiic: String,
-                  on serviceId: String,
-                  onComplete: StringCallback?,
-                  onError: ErrorCallback?)
+    func discover(discoveredDevices: CallbackType<[Device]>?, onError: CallbackType<Error>?)
+    func stopDiscover()
+    func connect(to device: Device)
+    func disconnect()
+    func read(from characteristic: String, serviceId: String, onComplete: CallbackType<Data?>?, onError: CallbackType<Error>?)
+    func write(liveController: LiveControllerDataModel)
 }
