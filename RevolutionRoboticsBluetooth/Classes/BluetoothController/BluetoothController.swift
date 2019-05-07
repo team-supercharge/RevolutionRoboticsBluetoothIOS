@@ -24,7 +24,10 @@ final class BluetoothController: NSObject {
     private var discoveredPeripherals: Set<CBPeripheral> = Set<CBPeripheral>()
     private var connectedPeripheral: CBPeripheral?
     private var discoverCallback: CallbackType<[Device]>?
-    private var callbackDictionary: [String : CallbackType<Data?>] = [:]
+    private var onDeviceConnected: Callback?
+    private var onDeviceDisconnected: Callback?
+    private var onDeviceConnectionError: CallbackType<Error>?
+    private var callbackDictionary: [String: CallbackType<Data?>] = [:]
     private var counter: UInt8 = 0
 
     static let shared = BluetoothController()
@@ -104,7 +107,7 @@ extension BluetoothController: BluetoothControllerInterface {
         print("🔹 Discovery stopped!")
     }
 
-    func connect(to device: Device) {
+    func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: CallbackType<Error>?) {
         guard let selectedPeripheral = discoveredPeripherals.first(where: { $0.identifier == UUID(uuidString: device.id) }) else {
             return
         }
@@ -112,6 +115,9 @@ extension BluetoothController: BluetoothControllerInterface {
         bluetoothManager.connect(selectedPeripheral, options: nil)
         selectedPeripheral.discoverServices(nil)
         connectedPeripheral = selectedPeripheral
+        onDeviceConnected = onConnected
+        onDeviceDisconnected = onDisconnected
+        onDeviceConnectionError = onError
     }
 
     func disconnect() {
@@ -153,23 +159,32 @@ extension BluetoothController: CBCentralManagerDelegate {
         }
     }
 
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully connected!")
+        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery initiated!")
+        onDeviceConnected?()
+        peripheral.discoverServices(nil)
+    }
+
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        print("⚠️ Peripheral \(peripheral.name ?? "Unknown device") failed to connect!")
+        guard let error = error else { return }
+        onDeviceConnectionError?(error)
+    }
+
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let error = error {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") disconnect failed - \(error.localizedDescription)!")
+            onDeviceConnectionError?(error)
         } else {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully disconnected!")
+            onDeviceDisconnected?()
         }
     }
 }
 
 // MARK: - CBCentralManagerDelegate
 extension BluetoothController: CBPeripheralDelegate {
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully connected!")
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery initiated!")
-        peripheral.discoverServices(nil)
-    }
-
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery failed - \(error.localizedDescription)")
