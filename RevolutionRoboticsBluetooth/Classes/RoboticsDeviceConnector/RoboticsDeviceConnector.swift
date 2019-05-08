@@ -18,7 +18,7 @@ public final class RoboticsDeviceConnector {
 // MARK: - RoboticsDeviceConnectorInterface
 extension RoboticsDeviceConnector: RoboticsDeviceConnectorInterface {
     public func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: CallbackType<Error>?) {
-        bluetoothController.connect(to: device)
+        bluetoothController.connect(to: device, onConnected: onConnected, onDisconnected: onDisconnected, onError: onError)
     }
 
     public func disconnect() {
