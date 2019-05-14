@@ -8,6 +8,7 @@
 enum BluetoothControllerError: Error {
     case bluetoothIsNotPoweredOn
     case invalidServiceOrCharacteristic
+    case invalidCharacterEncoding
 
     var localizedDescription: String {
         switch self {
@@ -15,6 +16,8 @@ enum BluetoothControllerError: Error {
             return "❌ Bluetooth is not powered on!"
         case .invalidServiceOrCharacteristic:
             return "❌ You requested an invalide service or characteristic!"
+        case .invalidCharacterEncoding:
+            return "❌ You received data with wrong encoding!"
         }
     }
 }
