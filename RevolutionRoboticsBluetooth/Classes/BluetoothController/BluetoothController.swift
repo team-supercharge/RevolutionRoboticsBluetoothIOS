@@ -113,7 +113,6 @@ extension BluetoothController: BluetoothControllerInterface {
         }
         print("🔹 Connection initiated for \(selectedPeripheral.name ?? "Unknonwn Name")!")
         bluetoothManager.connect(selectedPeripheral, options: nil)
-        selectedPeripheral.discoverServices(nil)
         connectedPeripheral = selectedPeripheral
         onDeviceConnected = onConnected
         onDeviceDisconnected = onDisconnected
