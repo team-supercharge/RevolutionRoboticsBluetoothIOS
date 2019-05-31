@@ -1,16 +1,23 @@
 PODS:
-  - RevolutionRoboticsBluetooth (0.1.0)
+  - CryptoSwift (1.0.0)
+  - RevolutionRoboticsBluetooth (0.1.0):
+    - CryptoSwift (~> 1.0)
 
 DEPENDENCIES:
   - RevolutionRoboticsBluetooth (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CryptoSwift
 
 EXTERNAL SOURCES:
   RevolutionRoboticsBluetooth:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RevolutionRoboticsBluetooth: 1af416fe3140aba90113bd7bd469b7279a09dd8b
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  RevolutionRoboticsBluetooth: 2909c6ac96b6b3b47a279edea08b0cbd4beb0574
 
-PODFILE CHECKSUM: f16c702602ac7fc75b212803faffcc9fc77495ec
+PODFILE CHECKSUM: 8bfec8a4d62d0183dfabc6520f4298f0313210db
 
 COCOAPODS: 1.6.1

@@ -54,6 +54,5 @@ enum RoboticsLiveControllerServiceCharacteristic {
 }
 
 enum LongMessageCharacteristic {
-    static let brainToMobile = "d59bb321-7218-4fb9-abac-2f6814f31a4d"
-    static let mobileToBrain = "b81239d9-260b-4945-bcfe-8b1ef1fc2879"
+    static let longMessage = "d59bb321-7218-4fb9-abac-2f6814f31a4d"
 }
