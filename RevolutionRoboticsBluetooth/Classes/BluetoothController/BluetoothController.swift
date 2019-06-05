@@ -162,7 +162,7 @@ extension BluetoothController: CBCentralManagerDelegate {
             print("🔹 Bluetooth state updated to: .poweredOff!")
         case .poweredOn:
             print("🔹 Bluetooth state updated to: .poweredOn!")
-            if let peripheral = connectedPeripheral {
+            if let peripheral = connectedPeripheral, shouldReconnect {
                 print("🔹 Trying to reconnecto to previously connected: \(peripheral.name ?? "Unknown device")!")
                 central.connect(peripheral, options: nil)
             }
