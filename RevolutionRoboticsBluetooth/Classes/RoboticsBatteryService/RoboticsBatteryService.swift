@@ -43,10 +43,7 @@ extension RoboticsBatteryService {
                     onError?(BluetoothControllerError.invalidServiceOrCharacteristic)
                     return
                 }
-                let percentage = data.withUnsafeBytes({ (pointer: UnsafePointer<UInt8>) -> UInt8 in
-                    return pointer.pointee
-                })
-                onComplete?(Int(percentage))
+                onComplete?(Int([UInt8](data)[0]))
         }, onError: { error in
             onError?(error)
         })

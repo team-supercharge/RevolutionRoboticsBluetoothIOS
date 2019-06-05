@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreBluetooth
+import CryptoSwift
 
 final class BluetoothController: NSObject {
     // MARK: - Constants
@@ -29,6 +30,7 @@ final class BluetoothController: NSObject {
     private var onDeviceConnectionError: CallbackType<Error>?
     private var callbackDictionary: [String: CallbackType<Data?>] = [:]
     private var counter: UInt8 = 0
+    private let processor: LongMessageProcessor = LongMessageProcessor()
 
     static let shared = BluetoothController()
 
@@ -124,6 +126,21 @@ extension BluetoothController: BluetoothControllerInterface {
         print("🔹 Disconnect initiated for \(connectedPeripheral.name ?? "Unknonwn Name")!")
         bluetoothManager.cancelPeripheralConnection(connectedPeripheral)
         self.connectedPeripheral = nil
+    }
+
+    func write(data: LongMessageData, onComplete: Callback?, onError: CallbackType<Error>?) {
+        guard let peripheralCharacteristic = connectedPeripheral?.services?
+            .first(where: { $0.uuid == CBUUID(string: ServiceId.longMessage) })?
+            .characteristics?
+            .first(where: { $0.uuid == CBUUID(string: LongMessageCharacteristic.longMessage) }) else {
+                return
+        }
+
+        processor.start(connectedPeripheral: connectedPeripheral!,
+                        characteristic: peripheralCharacteristic,
+                        data: data,
+                        onComplete: onComplete,
+                        onError: onError)
     }
 }
 
@@ -223,9 +240,14 @@ extension BluetoothController: CBPeripheralDelegate {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") update value failed - \(error.localizedDescription)")
         }
         print("🔹 Peripheral \(peripheral.name ?? "Unknown device") update value successfull")
-        let dataClosure = callbackDictionary[characteristic.uuid.uuidString]
-        dataClosure?(characteristic.value)
-        callbackDictionary.removeValue(forKey: characteristic.uuid.uuidString)
+        if processor.isWriteInProgress {
+            guard let response = LongMessageReadResponse(data: characteristic.value) else { return }
+            processor.next(response)
+        } else {
+            let dataClosure = callbackDictionary[characteristic.uuid.uuidString]
+            dataClosure?(characteristic.value)
+            callbackDictionary.removeValue(forKey: characteristic.uuid.uuidString)
+        }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -233,6 +255,9 @@ extension BluetoothController: CBPeripheralDelegate {
             print(error.localizedDescription)
         } else {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") didWriteValueFor successfull")
+            if processor.isWriteInProgress {
+                processor.next()
+            }
         }
     }
 }

@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var button6: UIButton!
     @IBOutlet private weak var readBatteryButton: UIButton!
     @IBOutlet private weak var readSystemInfoButton: UIButton!
+    @IBOutlet private weak var sendTestFileButton: UIButton!
 
     // MARK: - Properties
     private let discoverer = RoboticsDeviceDiscoverer()
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
     private let battery = RoboticsBatteryService()
     private let live = RoboticsLiveControllerService()
     private let deviceService = RoboticsDeviceService()
+    private let configurationService = RoboticsConfigurationService()
 }
 
 // MARK: - Actions
@@ -164,6 +166,18 @@ extension ViewController {
             print("📱 Robot model number: \(modelNumber)")
         }, onError: { error in
             print("📱 ❌ Model number read failed: \(error.localizedDescription)")
+        })
+    }
+
+    @IBAction func sendTestFileTapped(_ sender: Any) {
+        let url = Bundle.main.url(forResource: "led_test", withExtension: ".py")!
+        configurationService.testKit(
+            with: url,
+            onSuccess: {
+                print("📱 Successfully processed the program!")
+        },
+            onError: { error in
+                print(error.localizedDescription)
         })
     }
 }
