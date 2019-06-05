@@ -31,6 +31,7 @@ final class BluetoothController: NSObject {
     private var callbackDictionary: [String: CallbackType<Data?>] = [:]
     private var counter: UInt8 = 0
     private let processor: LongMessageProcessor = LongMessageProcessor()
+    private var shouldReconnect = true
 
     static let shared = BluetoothController()
 
@@ -126,6 +127,7 @@ extension BluetoothController: BluetoothControllerInterface {
         print("🔹 Disconnect initiated for \(connectedPeripheral.name ?? "Unknonwn Name")!")
         bluetoothManager.cancelPeripheralConnection(connectedPeripheral)
         self.connectedPeripheral = nil
+        self.shouldReconnect = false
     }
 
     func write(data: LongMessageData, onComplete: Callback?, onError: CallbackType<Error>?) {
@@ -183,6 +185,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully connected!")
         print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery initiated!")
         onDeviceConnected?()
+        shouldReconnect = true
         peripheral.discoverServices(nil)
     }
 
@@ -200,9 +203,10 @@ extension BluetoothController: CBCentralManagerDelegate {
             print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully disconnected!")
             onDeviceDisconnected?()
         }
-
-        print("🔹 Trying to reconnect to \(peripheral.name ?? "Unknown device")!")
-        central.connect(peripheral, options: nil)
+        if shouldReconnect {
+            print("🔹 Trying to reconnect to \(peripheral.name ?? "Unknown device")!")
+            central.connect(peripheral, options: nil)
+        }
     }
 }
 
