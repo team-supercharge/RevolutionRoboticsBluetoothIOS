@@ -35,10 +35,12 @@ extension LongMessageProcessor {
         self.connectedPeripheral = connectedPeripheral
         self.characteristic = characteristic
         prefillQueue(data: data)
+        print("📦 Processing queue item: \(messageQueue.first!)")
         process(item: messageQueue.first)
     }
 
     func next(_ response: LongMessageReadResponse? = nil) {
+        print("📦 Processing queue item: \(messageQueue.first!)")
         switch messageQueue.first! {
         case .uploadMessage(_, _):
             process(item: messageQueue.first, with: response)
@@ -58,11 +60,29 @@ extension LongMessageProcessor {
     private func prefillQueue(data: LongMessageData) {
         switch data.type {
         case .firmwareData:
-            messageQueue = []
+            messageQueue = [
+                .select(.firmwareData),
+                .readCheckSum,
+                .initTransfer(.initTransfer, [UInt8](data.data).md5()),
+                .uploadMessage(.upload, ChunkedData(data: [UInt8](data.data).chunked)),
+                .finalize
+            ]
         case .frameworkData:
-            messageQueue = []
+            messageQueue = [
+                .select(.frameworkData),
+                .readCheckSum,
+                .initTransfer(.initTransfer, [UInt8](data.data).md5()),
+                .uploadMessage(.upload, ChunkedData(data: [UInt8](data.data).chunked)),
+                .finalize
+            ]
         case .configurationData:
-            messageQueue = []
+            messageQueue = [
+                .select(.configurationData),
+                .readCheckSum,
+                .initTransfer(.initTransfer, [UInt8](data.data).md5()),
+                .uploadMessage(.upload, ChunkedData(data: [UInt8](data.data).chunked)),
+                .finalize
+            ]
         case .testKit:
             messageQueue = [
                 .select(.testKit),

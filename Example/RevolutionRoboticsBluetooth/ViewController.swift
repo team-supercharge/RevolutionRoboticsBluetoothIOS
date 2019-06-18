@@ -180,5 +180,17 @@ extension ViewController {
                 print(error.localizedDescription)
         })
     }
+
+    @IBAction private func updateFrameworkTapped(_ sender: UIButton) {
+        let url = Bundle.main.url(forResource: "framework-0.1-r402", withExtension: ".tar.gz")!
+        configurationService.updateFramework(
+            with: url,
+            onSuccess: {
+                print("📱 Successfully processed the program!")
+        },
+            onError: { error in
+                print(error.localizedDescription)
+        })
+    }
 }
 
