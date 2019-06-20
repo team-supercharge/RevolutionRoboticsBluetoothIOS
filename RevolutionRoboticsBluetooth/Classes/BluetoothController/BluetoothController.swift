@@ -32,6 +32,7 @@ final class BluetoothController: NSObject {
     private var counter: UInt8 = 0
     private let processor: LongMessageProcessor = LongMessageProcessor()
     private var shouldReconnect = true
+    private var serviceCount = 0
 
     static let shared = BluetoothController()
 
@@ -184,7 +185,6 @@ extension BluetoothController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully connected!")
         print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery initiated!")
-        onDeviceConnected?()
         shouldReconnect = true
         peripheral.discoverServices(nil)
     }
@@ -235,6 +235,12 @@ extension BluetoothController: CBPeripheralDelegate {
             characteristics.enumerated().forEach({ (index, characteristic) in
                 print("🔹 - #\(index) - \(characteristic.uuid.uuidString)")
             })
+            if serviceCount == Constants.robotServiceIds.count - 1 {
+                onDeviceConnected?()
+                serviceCount = 0
+            } else {
+                serviceCount += 1
+            }
         }
     }
 
