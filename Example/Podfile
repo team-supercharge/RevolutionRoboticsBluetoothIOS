@@ -4,10 +4,4 @@ ENV['COCOAPODS_DISABLE_STATS'] = "true"
 
 target 'RevolutionRoboticsBluetooth_Example' do
   pod 'RevolutionRoboticsBluetooth', :path => '../'
-
-  target 'RevolutionRoboticsBluetooth_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

@@ -12,9 +12,7 @@ import CryptoSwift
 final class BluetoothController: NSObject {
     // MARK: - Constants
     private enum Constants {
-        static let robotServiceIds: [CBUUID] = [
-            CBUUID(string: ServiceId.deviceInformationService),
-            CBUUID(string: ServiceId.batteryService),
+        static let requiredRobotServiceIDs: [CBUUID] = [
             CBUUID(string: ServiceId.liveMessage),
             CBUUID(string: ServiceId.longMessage)
         ]
@@ -103,7 +101,7 @@ extension BluetoothController: BluetoothControllerInterface {
         }
         discoverCallback = discoveredDevices
         print("🔹 Discovery started!")
-        bluetoothManager.scanForPeripherals(withServices: Constants.robotServiceIds, options: nil)
+        bluetoothManager.scanForPeripherals(withServices: Constants.requiredRobotServiceIDs, options: nil)
     }
 
     func stopDiscover() {
@@ -167,6 +165,8 @@ extension BluetoothController: CBCentralManagerDelegate {
                 print("🔹 Trying to reconnecto to previously connected: \(peripheral.name ?? "Unknown device")!")
                 central.connect(peripheral, options: nil)
             }
+        @unknown default:
+            print("❌ Unknown bluetooth radio state!")
         }
     }
 
@@ -235,7 +235,7 @@ extension BluetoothController: CBPeripheralDelegate {
             characteristics.enumerated().forEach({ (index, characteristic) in
                 print("🔹 - #\(index) - \(characteristic.uuid.uuidString)")
             })
-            if serviceCount == Constants.robotServiceIds.count - 1 {
+            if serviceCount == Constants.requiredRobotServiceIDs.count - 1 {
                 onDeviceConnected?()
                 serviceCount = 0
             } else {
