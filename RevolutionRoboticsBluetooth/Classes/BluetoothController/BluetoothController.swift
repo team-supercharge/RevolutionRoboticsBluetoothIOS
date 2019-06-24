@@ -238,6 +238,7 @@ extension BluetoothController: CBPeripheralDelegate {
             if serviceCount == Constants.requiredRobotServiceIDs.count - 1 {
                 onDeviceConnected?()
                 serviceCount = 0
+                onDeviceConnected = nil
             } else {
                 serviceCount += 1
             }
