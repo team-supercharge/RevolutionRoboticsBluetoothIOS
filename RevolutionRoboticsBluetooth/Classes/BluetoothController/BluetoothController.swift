@@ -21,6 +21,7 @@ final class BluetoothController: NSObject {
     // MARK: - Properties
     private var bluetoothManager: CBCentralManager!
     private var discoveredPeripherals: Set<CBPeripheral> = Set<CBPeripheral>()
+    private var discoveredDevices: [Device] = []
     private var connectedPeripheral: CBPeripheral?
     private var discoverCallback: CallbackType<[Device]>?
     private var onDeviceConnected: Callback?
@@ -106,6 +107,7 @@ extension BluetoothController: BluetoothControllerInterface {
 
     func stopDiscover() {
         bluetoothManager.stopScan()
+        discoveredDevices = []
         print("🔹 Discovery stopped!")
     }
 
@@ -177,13 +179,13 @@ extension BluetoothController: CBCentralManagerDelegate {
             print("🔹 Added peripheral to discovered peripherals!")
             discoveredPeripherals.insert(peripheral)
             peripheral.delegate = self
-            let devices = discoveredPeripherals.map({ device -> Device? in
-                guard let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String else {
-                    return Device(id: device.identifier.uuidString, name: device.name ?? "Unknonwn name")
-                }
-                return Device(id: device.identifier.uuidString, name: name)
-            })
-            discoverCallback?(devices.compactMap({ $0 }))
+            if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
+                discoveredDevices.append(Device(id: peripheral.identifier.uuidString, name: name))
+            } else {
+                discoveredDevices.append(Device(id: peripheral.identifier.uuidString,
+                                                name: peripheral.name ?? "Unknonwn name"))
+            }
+            discoverCallback?(discoveredDevices)
         }
     }
 
