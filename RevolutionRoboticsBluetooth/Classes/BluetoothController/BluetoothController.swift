@@ -177,8 +177,11 @@ extension BluetoothController: CBCentralManagerDelegate {
             print("🔹 Added peripheral to discovered peripherals!")
             discoveredPeripherals.insert(peripheral)
             peripheral.delegate = self
-            let devices = discoveredPeripherals.map({ Device(id: $0.identifier.uuidString, name: $0.name ?? "Unknown device") })
-            discoverCallback?(devices)
+            let devices = discoveredPeripherals.map({ peripheral -> Device? in
+                guard let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String else { return nil }
+                return Device(id: peripheral.identifier.uuidString, name: name)
+            })
+            discoverCallback?(devices.compactMap({ $0 }))
         }
     }
 
