@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var readBatteryButton: UIButton!
     @IBOutlet private weak var readSystemInfoButton: UIButton!
     @IBOutlet private weak var sendTestFileButton: UIButton!
+    @IBOutlet private weak var readMotorValueButton: UIButton!
 
     // MARK: - Properties
     private let discoverer = RoboticsDeviceDiscoverer()
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
     private let live = RoboticsLiveControllerService()
     private let deviceService = RoboticsDeviceService()
     private let configurationService = RoboticsConfigurationService()
+    private let motorService = RoboticsMotorService()
 }
 
 // MARK: - Actions
@@ -187,6 +189,21 @@ extension ViewController {
             with: url,
             onSuccess: {
                 print("📱 Successfully processed the program!")
+        },
+            onError: { error in
+                print(error.localizedDescription)
+        })
+    }
+
+    @IBAction private func readMotorValue(_ sender: UIButton) {
+        motorService.read(
+            id: 3,
+            onSuccess: { data in
+                guard let data = data else {
+                    print("No data received")
+                    return
+                }
+                print(String(data: data, encoding: .utf8))
         },
             onError: { error in
                 print(error.localizedDescription)
