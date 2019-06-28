@@ -6,5 +6,5 @@
 //
 
 public protocol RoboticsMotorServiceInterface {
-    func read(id: Int, onSuccess: CallbackType<MotorInfo>?, onError: CallbackType<Error>?)
+    func read(id: Int, onSuccess: CallbackType<Data?>?, onError: CallbackType<Error>?)
 }

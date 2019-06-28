@@ -110,31 +110,38 @@
                                 <rect key="frame" x="64" y="315" width="768" height="30"/>
                                 <subviews>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-mG-AAv" userLabel="readBatteryButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
                                         <state key="normal" title="Read battery"/>
                                         <connections>
                                             <action selector="readBatteryButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hfW-O2-8Ll"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1N-FH-G5U" userLabel="readSystemInfoButton">
-                                        <rect key="frame" x="192" y="0.0" width="192" height="30"/>
-                                        <state key="normal" title="Read battery"/>
+                                        <rect key="frame" x="153.5" y="0.0" width="153.5" height="30"/>
+                                        <state key="normal" title="Read system info"/>
                                         <connections>
                                             <action selector="readSystemInfoButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bqH-FY-r3H"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16Y-oR-Xbf" userLabel="sendTestFile">
-                                        <rect key="frame" x="384" y="0.0" width="192" height="30"/>
+                                        <rect key="frame" x="307" y="0.0" width="154" height="30"/>
                                         <state key="normal" title="Send test file"/>
                                         <connections>
                                             <action selector="sendTestFileTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CwU-IL-54O"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXk-8G-Qfy" userLabel="updateFramework">
-                                        <rect key="frame" x="576" y="0.0" width="192" height="30"/>
+                                        <rect key="frame" x="461" y="0.0" width="153.5" height="30"/>
                                         <state key="normal" title="Update framework"/>
                                         <connections>
                                             <action selector="updateFrameworkTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TfG-lA-Ku7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fml-ld-zKY" userLabel="readMotorValue">
+                                        <rect key="frame" x="614.5" y="0.0" width="153.5" height="30"/>
+                                        <state key="normal" title="Read motor value"/>
+                                        <connections>
+                                            <action selector="readMotorValue:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3jo-6D-vLq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -216,6 +223,7 @@
                         <outlet property="connectButton" destination="hCP-dl-uso" id="1gN-ZP-khL"/>
                         <outlet property="disconnectButton" destination="WSV-6P-1V4" id="N6Q-WZ-RJd"/>
                         <outlet property="readBatteryButton" destination="qoI-mG-AAv" id="xOT-Vk-4Qh"/>
+                        <outlet property="readMotorValueButton" destination="fml-ld-zKY" id="Tok-Je-SwK"/>
                         <outlet property="readSystemInfoButton" destination="X1N-FH-G5U" id="JYy-oy-NfB"/>
                         <outlet property="sendTestFileButton" destination="16Y-oR-Xbf" id="Opd-M3-p6i"/>
                         <outlet property="startKeepaliveButton" destination="1J1-gd-YLA" id="1ya-HU-I26"/>
