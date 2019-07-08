@@ -6,10 +6,15 @@
 //
 
 import Foundation
+import enum CoreBluetooth.CBManagerState
 
 public final class RoboticsDeviceDiscoverer {
     // MARK: - Properties
     private let bluetoothController: BluetoothControllerInterface = BluetoothController.shared
+
+    public var bluetoothRadioState: CBManagerState {
+        return bluetoothController.bluetoothRadioState
+    }
 
     public init() {
     }

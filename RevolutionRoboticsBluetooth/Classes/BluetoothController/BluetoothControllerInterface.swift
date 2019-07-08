@@ -5,7 +5,10 @@
 //  Created by Gabor Nagy Farkas on 2019. 04. 17..
 //
 
+import enum CoreBluetooth.CBManagerState
+
 protocol BluetoothControllerInterface {
+    var bluetoothRadioState: CBManagerState { get }
     func discover(discoveredDevices: CallbackType<[Device]>?, onError: CallbackType<Error>?)
     func stopDiscover()
     func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: CallbackType<Error>?)
