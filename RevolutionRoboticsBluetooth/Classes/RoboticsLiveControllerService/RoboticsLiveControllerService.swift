@@ -56,5 +56,10 @@ extension RoboticsLiveControllerService {
         print("🔹 Keep alive fired!")
         print(dataModel)
         bluetoothController.write(liveController: dataModel)
+        resetButtonStates()
+    }
+
+    private func resetButtonStates() {
+        dataModel.buttonStates = [false, false, false, false, false, false]
     }
 }
