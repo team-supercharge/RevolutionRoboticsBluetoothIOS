@@ -35,6 +35,10 @@ final class BluetoothController: NSObject {
 
     static let shared = BluetoothController()
 
+    var bluetoothRadioState: CBManagerState {
+        return bluetoothManager.state
+    }
+
     // MARK: - Initialization
     override private init() {
         super.init()
