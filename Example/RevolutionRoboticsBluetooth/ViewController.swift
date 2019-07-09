@@ -203,7 +203,7 @@ extension ViewController {
                     print("No data received")
                     return
                 }
-                print(String(data: data, encoding: .utf8))
+                print(String(data: data, encoding: .utf8)!)
         },
             onError: { error in
                 print(error.localizedDescription)

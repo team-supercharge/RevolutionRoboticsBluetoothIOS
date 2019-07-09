@@ -8,6 +8,7 @@
 import Foundation
 import CoreBluetooth
 import CryptoSwift
+import os
 
 final class BluetoothController: NSObject {
     // MARK: - Constants
@@ -62,7 +63,6 @@ extension BluetoothController: BluetoothControllerInterface {
                 return
         }
 
-        print("🔹 Read initiated on \(characteristic) for \(serviceId)")
         callbackDictionary[peripheralCharacteristic.uuid.uuidString] = onComplete
         connectedPeripheral?.readValue(for: peripheralCharacteristic)
     }
@@ -105,21 +105,18 @@ extension BluetoothController: BluetoothControllerInterface {
             return
         }
         discoverCallback = discoveredDevices
-        print("🔹 Discovery started!")
         bluetoothManager.scanForPeripherals(withServices: Constants.requiredRobotServiceIDs, options: nil)
     }
 
     func stopDiscover() {
         bluetoothManager.stopScan()
         discoveredDevices = []
-        print("🔹 Discovery stopped!")
     }
 
     func connect(to device: Device, onConnected: Callback?, onDisconnected: Callback?, onError: CallbackType<Error>?) {
         guard let selectedPeripheral = discoveredPeripherals.first(where: { $0.identifier == UUID(uuidString: device.id) }) else {
             return
         }
-        print("🔹 Connection initiated for \(selectedPeripheral.name ?? "Unknonwn Name")!")
         bluetoothManager.connect(selectedPeripheral, options: nil)
         connectedPeripheral = selectedPeripheral
         onDeviceConnected = onConnected
@@ -129,7 +126,7 @@ extension BluetoothController: BluetoothControllerInterface {
 
     func disconnect() {
         guard let connectedPeripheral = connectedPeripheral else { return }
-        print("🔹 Disconnect initiated for \(connectedPeripheral.name ?? "Unknonwn Name")!")
+        
         bluetoothManager.cancelPeripheralConnection(connectedPeripheral)
         self.connectedPeripheral = nil
         self.shouldReconnect = false
@@ -155,32 +152,20 @@ extension BluetoothController: BluetoothControllerInterface {
 extension BluetoothController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
-        case .unknown:
-            print("🔹 Bluetooth state updated to: .unknown!")
-        case .resetting:
-            print("🔹 Bluetooth state updated to: .resetting!")
-        case .unsupported:
-            print("🔹 Bluetooth state updated to: .unsupported!")
-        case .unauthorized:
-            print("🔹 Bluetooth state updated to: .unauthorized!")
-        case .poweredOff:
-            print("🔹 Bluetooth state updated to: .poweredOff!")
         case .poweredOn:
-            print("🔹 Bluetooth state updated to: .poweredOn!")
             if let peripheral = connectedPeripheral, shouldReconnect {
-                print("🔹 Trying to reconnecto to previously connected: \(peripheral.name ?? "Unknown device")!")
                 central.connect(peripheral, options: nil)
             }
+        case .unknown, .resetting, .unsupported, .unauthorized, .poweredOff:
+            os_log("Bluetooth is not powered on!")
         @unknown default:
-            print("❌ Unknown bluetooth radio state!")
+            os_log("Unforseen bluetooth radio state!")
         }
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
                         advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        print("🔹 Discovered a peripheral - \(peripheral.name ?? "Unknonwn name")")
         if !discoveredPeripherals.contains(peripheral) {
-            print("🔹 Added peripheral to discovered peripherals!")
             discoveredPeripherals.insert(peripheral)
             peripheral.delegate = self
             if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
@@ -194,28 +179,22 @@ extension BluetoothController: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully connected!")
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery initiated!")
         shouldReconnect = true
         peripheral.discoverServices(nil)
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("⚠️ Peripheral \(peripheral.name ?? "Unknown device") failed to connect!")
         guard let error = error else { return }
         onDeviceConnectionError?(error)
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let error = error {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") disconnect failed - \(error.localizedDescription)!")
             onDeviceConnectionError?(error)
         } else {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") successfully disconnected!")
             onDeviceDisconnected?()
         }
         if shouldReconnect {
-            print("🔹 Trying to reconnect to \(peripheral.name ?? "Unknown device")!")
             central.connect(peripheral, options: nil)
         }
     }
@@ -224,12 +203,10 @@ extension BluetoothController: CBCentralManagerDelegate {
 // MARK: - CBCentralManagerDelegate
 extension BluetoothController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        if let error = error {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery failed - \(error.localizedDescription)")
+        if error != nil {
+            os_log("Error while discovering services!")
         } else {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") service discovery successfully finished!")
             peripheral.services?.forEach({ service in
-                print("🔹 Peripheral \(peripheral.name ?? "Unknown device") characteristic discovery for \(service.uuid.uuidString) service initiated!")
                 peripheral.discoverCharacteristics(nil, for: service)
             })
         }
@@ -237,15 +214,10 @@ extension BluetoothController: CBPeripheralDelegate {
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService,
                     error: Error?) {
-        if let error = error {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") characteristic discovery failed - \(error.localizedDescription)")
+        if error != nil {
+            os_log("Error while discovering characteristics!")
         } else {
-            guard let characteristics = service.characteristics else { return }
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") characteristic discovery successfully finished!")
-            print("🔹 Characteristics for \(service.uuid.uuidString): ")
-            characteristics.enumerated().forEach({ (index, characteristic) in
-                print("🔹 - #\(index) - \(characteristic.uuid.uuidString)")
-            })
+            guard let characteristics = service.characteristics, !characteristics.isEmpty else { return }
             if serviceCount == Constants.requiredRobotServiceIDs.count - 1 {
                 onDeviceConnected?()
                 serviceCount = 0
@@ -257,11 +229,10 @@ extension BluetoothController: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") didUpdateValue delegate called!")
-        if let error = error {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") update value failed - \(error.localizedDescription)")
+        if error != nil {
+            os_log("Error while updating value!")
         }
-        print("🔹 Peripheral \(peripheral.name ?? "Unknown device") update value successfull")
+        
         if processor.isWriteInProgress {
             guard let response = LongMessageReadResponse(data: characteristic.value) else { return }
             processor.next(response)
@@ -273,10 +244,9 @@ extension BluetoothController: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
+        if error != nil {
+            os_log("Error while writing value!")
         } else {
-            print("🔹 Peripheral \(peripheral.name ?? "Unknown device") didWriteValueFor successfull")
             if processor.isWriteInProgress {
                 processor.next()
             }

@@ -22,7 +22,6 @@ public final class RoboticsLiveControllerService {
 // MARK: - RoboticsLiveControllerServiceInterface
 extension RoboticsLiveControllerService: RoboticsLiveControllerServiceInterface {
     public func start() {
-        print("🔹 Keep alive started!")
         timer = Timer.scheduledTimer(timeInterval: 0.1,
                                      target: self,
                                      selector: #selector(fireKeepAlive),
@@ -34,7 +33,6 @@ extension RoboticsLiveControllerService: RoboticsLiveControllerServiceInterface 
     public func stop() {
         timer?.invalidate()
         timer = nil
-        print("🔹 Keep alive stopped!")
     }
 
     public func updateXDirection(x: Int) {
@@ -53,8 +51,6 @@ extension RoboticsLiveControllerService: RoboticsLiveControllerServiceInterface 
 // MARK: - Timer
 extension RoboticsLiveControllerService {
     @objc func fireKeepAlive() {
-        print("🔹 Keep alive fired!")
-        print(dataModel)
         bluetoothController.write(liveController: dataModel)
         resetButtonStates()
     }
