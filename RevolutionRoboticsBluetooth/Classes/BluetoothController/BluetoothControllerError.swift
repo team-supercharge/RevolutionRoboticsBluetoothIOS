@@ -5,19 +5,29 @@
 //  Created by Gabor Nagy Farkas on 2019. 04. 24..
 //
 
-enum BluetoothControllerError: Error {
-    case bluetoothIsNotPoweredOn
-    case invalidServiceOrCharacteristic
-    case invalidCharacterEncoding
+enum BluetoothControllerError {
+    static let bluetoothIsNotPoweredOn = BluetoothIsNotPoweredOnError()
+    static let invalidServiceOrCharacteristic = InvalidServiceOrCharacteristic()
+    static let invalidCharacterEncoding = InvalidCharacterEncoding()
+}
 
-    var localizedDescription: String {
-        switch self {
-        case .bluetoothIsNotPoweredOn:
-            return "❌ Bluetooth is not powered on!"
-        case .invalidServiceOrCharacteristic:
-            return "❌ You requested an invalide service or characteristic!"
-        case .invalidCharacterEncoding:
-            return "❌ You received data with wrong encoding!"
-        }
-    }
+struct BluetoothIsNotPoweredOnError: LocalizedError {
+    var errorDescription: String? = "RevolutionRoboticsBluetooth error: Bluetooth is not powered on!"
+    var failureReason: String?
+    var recoverySuggestion: String?
+    var helpAnchor: String?
+}
+
+struct InvalidServiceOrCharacteristic: LocalizedError {
+    var errorDescription: String? = "RevolutionRoboticsBluetooth error: You requested an invalid service or characteristic!"
+    var failureReason: String?
+    var recoverySuggestion: String?
+    var helpAnchor: String?
+}
+
+struct InvalidCharacterEncoding: LocalizedError {
+    var errorDescription: String? = "RevolutionRoboticsBluetooth error: You received data with wrong encoding!"
+    var failureReason: String?
+    var recoverySuggestion: String?
+    var helpAnchor: String?
 }

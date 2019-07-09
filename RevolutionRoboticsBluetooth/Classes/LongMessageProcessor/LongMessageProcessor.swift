@@ -35,17 +35,16 @@ extension LongMessageProcessor {
         self.connectedPeripheral = connectedPeripheral
         self.characteristic = characteristic
         prefillQueue(data: data)
-        print("📦 Processing queue item: \(messageQueue.first!)")
+        
         process(item: messageQueue.first)
     }
 
     func next(_ response: LongMessageReadResponse? = nil) {
         guard !messageQueue.isEmpty else {
-            print("📦 Message queue is empty, returning.")
             isWriteInProgress = false
             return
         }
-        print("📦 Processing queue item: \(messageQueue.first!)")
+        
         switch messageQueue.first! {
         case .uploadMessage(_, _):
             process(item: messageQueue.first, with: response)
