@@ -117,6 +117,15 @@ extension BluetoothController: BluetoothControllerInterface {
         guard let selectedPeripheral = discoveredPeripherals.first(where: { $0.identifier == UUID(uuidString: device.id) }) else {
             return
         }
+        if let connectedPeripheral = connectedPeripheral {
+            bluetoothManager.cancelPeripheralConnection(connectedPeripheral)
+            self.connectedPeripheral = nil
+            onDeviceConnected = nil
+            onDeviceDisconnected = nil
+            onDeviceConnectionError = nil
+            self.shouldReconnect = false
+        }
+
         bluetoothManager.connect(selectedPeripheral, options: nil)
         connectedPeripheral = selectedPeripheral
         onDeviceConnected = onConnected
