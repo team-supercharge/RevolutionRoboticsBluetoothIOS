@@ -172,9 +172,9 @@ extension ViewController {
     }
 
     @IBAction func sendTestFileTapped(_ sender: Any) {
-        let url = Bundle.main.url(forResource: "led_test", withExtension: ".py")!
+        let data = try! Data(contentsOf: Bundle.main.url(forResource: "led_test", withExtension: ".py")!)
         configurationService.testKit(
-            with: url,
+            with: data,
             onSuccess: {
                 print("📱 Successfully processed the program!")
         },
@@ -184,9 +184,9 @@ extension ViewController {
     }
 
     @IBAction private func updateFrameworkTapped(_ sender: UIButton) {
-        let url = Bundle.main.url(forResource: "framework-0.1-r402", withExtension: ".tar.gz")!
+        let data = try! Data(contentsOf: Bundle.main.url(forResource: "framework-0.1-r402", withExtension: ".tar.gz")!)
         configurationService.updateFramework(
-            with: url,
+            with: data,
             onSuccess: {
                 print("📱 Successfully processed the program!")
         },

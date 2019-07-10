@@ -17,39 +17,25 @@ public final class RoboticsConfigurationService {
 
 // MARK: - RoboticsConfigurationServiceInterface
 extension RoboticsConfigurationService: RoboticsConfigurationServiceInterface {
-    public func updateFirmware(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?) {
-        guard let data = data(contentsOf: file, onError: onError) else { return }
+    public func updateFirmware(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?) {
         write(data: data, longMessageType: .firmwareData, onSuccess: onSuccess, onError: onError)
     }
 
-    public func updateFramework(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?) {
-        guard let data = data(contentsOf: file, onError: onError) else { return }
+    public func updateFramework(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?) {
         write(data: data, longMessageType: .frameworkData, onSuccess: onSuccess, onError: onError)
     }
 
-    public func testKit(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?) {
-        guard let data = data(contentsOf: file, onError: onError) else { return }
+    public func testKit(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?) {
         write(data: data, longMessageType: .testKit, onSuccess: onSuccess, onError: onError)
     }
 
-    public func sendConfiguration(with file: URL, onSuccess: Callback?, onError: CallbackType<Error>?) {
-        guard let data = data(contentsOf: file, onError: onError) else { return }
+    public func sendConfiguration(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?) {
         write(data: data, longMessageType: .configurationData, onSuccess: onSuccess, onError: onError)
     }
 }
 
 // MARK: - Private methods
 extension RoboticsConfigurationService {
-    private func data(contentsOf url: URL, onError: ((Error) -> Void)?) -> Data? {
-        do {
-            let data = try Data.init(contentsOf: url)
-            return data
-        } catch {
-            onError?(error)
-            return nil
-        }
-    }
-
     private func write(data: Data,
                        longMessageType: LongMessageType,
                        onSuccess: Callback?,
