@@ -57,6 +57,11 @@ extension LongMessageProcessor {
             process(item: messageQueue.first, with: response)
         }
     }
+
+    func stop() {
+        messageQueue = [.finalize]
+        process(item: messageQueue.first)
+    }
 }
 
 // MARK: - Private methods

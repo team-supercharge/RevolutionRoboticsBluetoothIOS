@@ -16,8 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
-  RevolutionRoboticsBluetooth: 2909c6ac96b6b3b47a279edea08b0cbd4beb0574
+  RevolutionRoboticsBluetooth: ea9ca47a8c74cc59177c0c91ceecfa079206944b
 
 PODFILE CHECKSUM: c2076059cdbc572a10c5dde2ce4d85f7a1543065
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.3
