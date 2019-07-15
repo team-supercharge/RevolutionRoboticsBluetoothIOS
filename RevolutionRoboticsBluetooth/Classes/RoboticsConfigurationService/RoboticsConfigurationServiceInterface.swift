@@ -10,4 +10,5 @@ public protocol RoboticsConfigurationServiceInterface {
     func updateFramework(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?)
     func testKit(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?)
     func sendConfiguration(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?)
+    func stopWrite()
 }

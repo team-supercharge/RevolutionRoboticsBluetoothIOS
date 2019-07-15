@@ -32,6 +32,10 @@ extension RoboticsConfigurationService: RoboticsConfigurationServiceInterface {
     public func sendConfiguration(with data: Data, onSuccess: Callback?, onError: CallbackType<Error>?) {
         write(data: data, longMessageType: .configurationData, onSuccess: onSuccess, onError: onError)
     }
+
+    public func stopWrite() {
+        bluetoothController.stopWrite()
+    }
 }
 
 // MARK: - Private methods

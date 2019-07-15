@@ -155,6 +155,12 @@ extension BluetoothController: BluetoothControllerInterface {
                         onComplete: onComplete,
                         onError: onError)
     }
+
+    func stopWrite() {
+        guard processor.isWriteInProgress else { return }
+
+        processor.stop()
+    }
 }
 
 // MARK: - CBCentralManagerDelegate
