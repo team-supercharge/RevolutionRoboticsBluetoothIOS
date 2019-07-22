@@ -6,5 +6,11 @@
 //
 
 public protocol RoboticsSensorServiceInterface {
+    /// Read data from the given sensor.
+    ///
+    /// - Parameters:
+    ///   - id: ID of the sensor.
+    ///   - onSuccess: Callback when the operation is successful.
+    ///   - onError: Error callback if the operation fails to complete.
     func read(id: Int, onSuccess: CallbackType<Data?>?, onError: CallbackType<Error>?)
 }
