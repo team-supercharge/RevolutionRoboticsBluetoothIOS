@@ -187,7 +187,7 @@ extension BluetoothController: CBCentralManagerDelegate {
                 discoveredDevices.append(Device(id: peripheral.identifier.uuidString, name: name))
             } else {
                 discoveredDevices.append(Device(id: peripheral.identifier.uuidString,
-                                                name: peripheral.name ?? "Unknonwn name"))
+                                                name: peripheral.name ?? "Revolution Robotics Brain"))
             }
             discoverCallback?(discoveredDevices)
         }
