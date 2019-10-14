@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'RevolutionRoboticsBluetooth'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of RevolutionRoboticsBluetooth.'
+  s.summary          = 'A Bluetooth SDK for Revolution Robotics Robot Controller'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,15 +17,13 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = 'A Bluetooth SDK for Revolution Robotics Robot Controller.'
 
-  s.homepage         = 'https://gitlab.supercharge.io/revolutionrobotics/bluetooth-ios'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.homepage         = 'https://github.com/RevolutionRobotics/RevolutionRoboticsBluetoothIOS.git'
+  # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.license          = { :type => 'GPLv3', :file => 'LICENSE' }
   s.author           = { 'Gabor Nagy Farkas' => 'gabor.nagy.farkas@supercharge.io' }
-  s.source           = { :git => 'https://gitlab.supercharge.io/revolutionrobotics/bluetooth-ios', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/RevolutionRobotics/RevolutionRoboticsBluetoothIOS.git', :tag => s.version }
   s.swift_version = "5.0"
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
