@@ -52,7 +52,6 @@ extension RoboticsLiveControllerService: RoboticsLiveControllerServiceInterface 
 extension RoboticsLiveControllerService {
     @objc func fireKeepAlive() {
         bluetoothController.write(liveController: dataModel)
-        resetButtonStates()
     }
 
     private func resetButtonStates() {
