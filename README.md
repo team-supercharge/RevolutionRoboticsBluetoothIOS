@@ -1,6 +1,6 @@
 # RevolutionRoboticsBluetooth
 
-[![Build](https://github.com/RevolutionRobotics/RevolutionRoboticsBluetooth/workflows/build/badge.svg)](https://github.com/RevolutionRobotics/RevolutionRoboticsBluetooth/actions)
+[![Build](https://github.com/RevolutionRobotics/RevolutionRoboticsBluetoothIOS/workflows/build/badge.svg)](https://github.com/RevolutionRobotics/RevolutionRoboticsBluetoothIOS/actions)
 [![Version](https://img.shields.io/cocoapods/v/RevolutionRoboticsBluetooth.svg?style=flat)](https://cocoapods.org/pods/RevolutionRoboticsBluetooth)
 [![License](https://img.shields.io/cocoapods/l/RevolutionRoboticsBluetooth.svg?style=flat)](https://cocoapods.org/pods/RevolutionRoboticsBluetooth)
 [![support](https://img.shields.io/badge/support-iOS%2011%2B%20-FB7DEC.svg?style=flat)](https://www.apple.com/nl/ios/ios-13/)
