@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RevolutionRoboticsBluetooth'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A Bluetooth SDK for Revolution Robotics Robot Controller'
 
 # This description is used to generate tags and improve search results.
