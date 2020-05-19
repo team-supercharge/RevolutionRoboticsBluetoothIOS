@@ -16,6 +16,7 @@ protocol BluetoothControllerInterface {
     func disconnect()
     func read(from characteristic: String, serviceId: String, onComplete: CallbackType<Data?>?, onError: CallbackType<Error>?)
     func write(liveController: LiveControllerDataModel)
+    func writeSystemId(data: Data, onComplete: Callback?, onError: CallbackType<Error>?)
     func write(data: LongMessageData, onComplete: Callback?, onError: CallbackType<Error>?)
     func stopWrite()
 }

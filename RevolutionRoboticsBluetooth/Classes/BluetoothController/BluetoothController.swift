@@ -141,6 +141,17 @@ extension BluetoothController: BluetoothControllerInterface {
         self.shouldReconnect = false
     }
 
+    func writeSystemId(data: Data, onComplete: Callback?, onError: CallbackType<Error>?) {
+        guard let deviceCharacteristic = connectedPeripheral?.services?
+            .first(where: { $0.uuid == CBUUID(string: ServiceId.deviceInformationService) })?
+            .characteristics?
+            .first(where: { $0.uuid == CBUUID(string: RoboticsDeviceServiceCharacteristic.systemId) }) else {
+                return
+        }
+        
+        connectedPeripheral?.writeValue(data, for: deviceCharacteristic, type: .withResponse)
+    }
+    
     func write(data: LongMessageData, onComplete: Callback?, onError: CallbackType<Error>?) {
         guard let peripheralCharacteristic = connectedPeripheral?.services?
             .first(where: { $0.uuid == CBUUID(string: ServiceId.longMessage) })?

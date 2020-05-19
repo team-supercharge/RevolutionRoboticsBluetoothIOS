@@ -13,6 +13,14 @@ public protocol RoboticsDeviceServiceInterface {
     ///   - onError: Error callback if the operation fails to complete.
     func getSerialNumber(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?)
 
+    /// Set the system ID of the connected device.
+    ///
+    /// - Parameters:
+    ///   - id: New device ID
+    ///   - onCompleted: Callback when the operation is successful.
+    ///   - onError: Error callback if the operation fails to complete.
+    func setSystemId(id: String, onCompleted: Callback?, onError: CallbackType<Error>?)
+    
     /// Get the manufacturer's name of the connected device.
     ///
     /// - Parameters:

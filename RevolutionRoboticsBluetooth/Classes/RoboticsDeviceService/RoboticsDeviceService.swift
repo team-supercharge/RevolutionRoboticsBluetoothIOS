@@ -17,6 +17,10 @@ public final class RoboticsDeviceService {
 
 // MARK: - RoboticsDeviceServiceInterface
 extension RoboticsDeviceService: RoboticsDeviceServiceInterface {
+    public func setSystemId(id: String, onCompleted: Callback?, onError: CallbackType<Error>?) {
+        writeString(id, onComplete: onCompleted, onError: onError)
+    }
+    
     public func getSerialNumber(onCompleted: CallbackType<String>?, onError: CallbackType<Error>?) {
         readString(from: RoboticsDeviceServiceCharacteristic.serialNumber,
                    onComplete: onCompleted,
@@ -62,6 +66,17 @@ extension RoboticsDeviceService: RoboticsDeviceServiceInterface {
 
 // MARK: - Private methods
 extension RoboticsDeviceService {
+    private func writeString(_ id: String,
+                            onComplete: Callback?,
+                            onError: CallbackType<Error>?) {
+        guard
+            let encoded = id.data(using: .utf8)?.base64EncodedString(),
+            let encodedData = Data(base64Encoded: encoded)
+        else { return }
+
+        bluetoothController.writeSystemId(data: encodedData, onComplete: onComplete, onError: onError)
+    }
+
     private func readString(from characteristic: String,
                             onComplete: CallbackType<String>?,
                             onError: CallbackType<Error>?) {
