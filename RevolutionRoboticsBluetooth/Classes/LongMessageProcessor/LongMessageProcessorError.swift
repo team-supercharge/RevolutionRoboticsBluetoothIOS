@@ -5,6 +5,8 @@
 //  Created by Gabor Nagy Farkas on 2019. 06. 05..
 //
 
+import Foundation
+
 enum LongMessageProcessorError {
     static let writeInProgress = WriteInProgressError()
 }

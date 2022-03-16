@@ -5,6 +5,8 @@
 //  Created by Gabor Nagy Farkas on 2019. 04. 24..
 //
 
+import Foundation
+
 enum BluetoothControllerError {
     static let bluetoothIsNotPoweredOn = BluetoothIsNotPoweredOnError()
     static let invalidServiceOrCharacteristic = InvalidServiceOrCharacteristic()

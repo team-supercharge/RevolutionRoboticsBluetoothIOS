@@ -5,6 +5,8 @@
 //  Created by Gabor Nagy Farkas on 2019. 04. 17..
 //
 
+import Foundation
+
 public protocol RoboticsMotorServiceInterface {
     /// Read data from the given motor.
     ///
